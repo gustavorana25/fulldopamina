@@ -15,3 +15,9 @@
     outline: 0;
     min-width: 400px;
 }
+
+.gif{
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}

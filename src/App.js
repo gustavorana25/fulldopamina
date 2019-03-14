@@ -1,4 +1,5 @@
-import TodoList from './components/TodoList/TodoList.vue'
+import TodoList from './components/TodoList/TodoList.vue';
+import {randomGif} from './gifs';
 
 const audios = {
     yeah: new Audio(require('./assets/yeah.wav')),
@@ -21,7 +22,9 @@ export default {
     data: () => ({
         todos: getTodos(),
         dones:[],
-        newTodo: ""
+        newTodo: "",
+        gif:randomGif(),
+        showGif:false
     }),
     methods: {
         addTodo: function (e) {
@@ -37,6 +40,11 @@ export default {
             this.todos = this.todos.filter((_,i) => i!==index);
             saveTodos(this.todos);
             this.playAudio(audios.victory, 0.3);
+            this.showGif = true;
+            this.gif= randomGif();
+            setTimeout(()=>{
+                this.showGif = false;
+            },2000)
         },
         playAudio: function(audio, volume){
             audio.volume = volume;

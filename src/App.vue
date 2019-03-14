@@ -5,6 +5,7 @@
     </form>
     <TodoList :doneTodo="doneTodo" title="Todo List" v-bind:todos="todos"/>
     <TodoList title="Finalizado" done v-bind:todos="dones"/>
+    <img v-show="showGif" :src="gif" class="gif" />
   </div>
 </template>
 
