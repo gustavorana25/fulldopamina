@@ -1,5 +1,7 @@
 # full-dopamina
 
+Apenas uma brincadeira com Vue
+
 ## Project setup
 ```
 npm install

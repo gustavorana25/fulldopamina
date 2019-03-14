@@ -1,0 +1,23 @@
+h3 {
+  margin: 40px 0 0;
+}
+li {
+  display: inline-block;
+  margin: 4px 10px;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+}
+
+li.done{
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+
+li:hover{
+    opacity: 0.8;
+}
+
+a {
+  color: #42b983;
+}
