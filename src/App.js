@@ -1,12 +1,25 @@
 import TodoList from './components/TodoList/TodoList.vue'
 
+const audios = {
+    yeah: new Audio(require('./assets/yeah.wav')),
+    victory: new Audio(require('./assets/victory.wav'))
+}
+
+const saveTodos = (todos)=>{
+    localStorage.setItem("todos", JSON.stringify(todos))
+}
+
+const getTodos = () =>{
+    return localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : ["Começando a brincar com Full dopamina"];
+}
+
 export default {
     name: 'app',
     components: {
         TodoList
     },
     data: () => ({
-        todos: ["Começando a brincar com Full dopamina"],
+        todos: getTodos(),
         dones:[],
         newTodo: ""
     }),
@@ -15,20 +28,19 @@ export default {
             this.todos.push(this.newTodo);
             this.newTodo = "";
 
-            this.playAudio(require('./assets/yeah.wav'), 0.4);
+            this.playAudio(audios.yeah, 0.5);
+            saveTodos(this.todos);
             e.preventDefault();
         },
         doneTodo: function (index) {
             this.dones.push(this.todos[index]);
             this.todos = this.todos.filter((_,i) => i!==index);
-
-            this.playAudio(require('./assets/victory.wav'), 0.1);
+            saveTodos(this.todos);
+            this.playAudio(audios.victory, 0.3);
         },
         playAudio: function(audio, volume){
-            var audioObjct = new Audio(audio);
-            audioObjct.volume = volume;
-            audioObjct.play();
-            audioObjct = undefined;
+            audio.volume = volume;
+            audio.play();
         }
     }
 }
