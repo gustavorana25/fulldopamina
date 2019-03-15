@@ -5,6 +5,7 @@ export default {
         title: String,
         done: Boolean,
         doneTodo: Function,
-        clean: Function
+        clean: Function,
+        cleanText: String | undefined
     }
 }

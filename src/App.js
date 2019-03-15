@@ -43,6 +43,10 @@ export default {
             this.dones = [];
             this.updateLocalStorage();
         },
+        cleanTasks: function(){
+            this.todos = [];
+            this.updateLocalStorage();
+        },
         addGif: function(){
             this.showGif = true;
             setTimeout(() => {

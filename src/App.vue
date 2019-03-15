@@ -7,13 +7,16 @@
       title="Tarefas" 
       v-bind:todos="todos"
       :doneTodo="doneTodo"
+      :clean="cleanTasks"
+      cleanText="Limpar tarefas"
     />
     <TodoList 
       title="Concluidas" 
       v-bind:todos="dones"
       :doneTodo="restoreTodo" 
       done
-      :clean="cleanDoneTasks" 
+      :clean="cleanDoneTasks"
+      cleanText="Limpar tarefas concluídas"
     />
     <img v-show="showGif" :src="gif" class="gif" />
   </div>
