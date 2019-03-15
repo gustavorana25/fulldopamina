@@ -1,7 +1,7 @@
 import TodoList from './components/TodoList/TodoList.vue';
 import { playAudio } from './helpers/audio';
 import {randomGif} from './helpers/gifs';
-import { saveTodos, getTodos } from './helpers/localStorage';
+import { saveLocalStorage, getFromLocalStorage } from './helpers/localStorage';
 
 export default {
     name: 'app',
@@ -9,8 +9,8 @@ export default {
         TodoList
     },
     data: () => ({
-        todos: getTodos(),
-        dones:[],
+        todos: getFromLocalStorage("todo", ["Começando a brincar com Full dopamina"]),
+        dones: getFromLocalStorage("done", []),
         newTodo: "",
         gif:randomGif(),
         showGif:false
@@ -20,20 +20,24 @@ export default {
             this.todos.push(this.newTodo);
             this.newTodo = "";
             playAudio("yeah", 0.4);
-            saveTodos(this.todos);
+            this.updateLocalStorage();
             e.preventDefault();
         },
         doneTodo: function (index) {
             this.dones.push(this.todos[index]);
             this.todos = this.todos.filter((_,i) => i!==index);
-            saveTodos(this.todos);
+            this.updateLocalStorage();
             playAudio("victory", 0.3);
             this.addGif();
         },
         restoreTodo: function (index) {
             this.todos.push(this.dones[index]);
             this.dones = this.dones.filter((_, i) => i !== index);
-            saveTodos(this.todos);
+            this.updateLocalStorage();
+        },
+        updateLocalStorage:() => {
+            saveLocalStorage("todo", this.todos);
+            saveLocalStorage("done", this.dones);
         },
         addGif: function(){
             this.showGif = true;

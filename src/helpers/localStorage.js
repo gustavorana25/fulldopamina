@@ -1,7 +1,8 @@
-export const saveTodos = (todos) => {
-    localStorage.setItem("todos", JSON.stringify(todos))
+export const saveLocalStorage = (key, val) => {
+    localStorage.setItem(key, JSON.stringify(val))
 }
 
-export const getTodos = () => {
-    return localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : ["Começando a brincar com Full dopamina"];
+export const getFromLocalStorage = (key, defaultValue=null) => {
+    return localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : defaultValue;
 }
+
