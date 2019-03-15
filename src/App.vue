@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <form @submit="addTodo">
+    <form @submit="addTodo" action="#">
       <input class="inputGeneral" v-model="newTodo" type="text" placeholder="Digite sua tarefa e aperte enter" />
     </form>
     <TodoList 
