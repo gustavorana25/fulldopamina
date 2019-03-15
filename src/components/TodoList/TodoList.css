@@ -14,18 +14,15 @@ li {
 }
 
 li:hover{
-  background: #cfcfcf;
+  background: #f0f0f0;
 }
 
 li:first-of-type{
   margin-top: 5px;
 }
+
 li.done{
     text-decoration: line-through;
-    opacity: 0.8;
-}
-
-li:hover{
     opacity: 0.8;
 }
 
