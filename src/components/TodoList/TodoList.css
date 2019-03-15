@@ -1,5 +1,27 @@
+
+.headerList{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button{
+  border: 0;
+  padding: 5px 21px;
+  border-radius: 21px;
+  font-size: 13px;
+  background: #4594e8;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover{
+  background: #65adf9;
+}
+
 h1{
   font-size: 34px;
+  margin-right: auto;
 }
 
 .list:not(:first-of-type){

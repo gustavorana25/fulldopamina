@@ -1,6 +1,9 @@
 <template>
   <div class="list">
-    <h1>{{title}}:</h1>
+    <div class="headerList">
+      <h1>{{title}}:</h1>
+      <button v-show="clean" v-on:click="clean()">Limpar</button>
+    </div> 
     <ul>
       <li v-bind:class="{ done: done }" v-for="(todo, i) in todos" v-on:click="doneTodo(i)" :key="i">
         {{todo}}

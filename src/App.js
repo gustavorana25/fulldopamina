@@ -39,6 +39,10 @@ export default {
             saveLocalStorage("todo", this.todos);
             saveLocalStorage("done", this.dones);
         },
+        cleanDoneTasks: function(){
+            this.dones = [];
+            this.updateLocalStorage();
+        },
         addGif: function(){
             this.showGif = true;
             setTimeout(() => {

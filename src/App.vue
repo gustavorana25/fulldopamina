@@ -3,8 +3,18 @@
     <form @submit="addTodo">
       <input class="inputGeneral" v-model="newTodo" type="text" placeholder="Digite sua tarefa e aperte enter" />
     </form>
-    <TodoList :doneTodo="doneTodo" title="Tarefas" v-bind:todos="todos"/>
-    <TodoList :doneTodo="restoreTodo" title="Concluidas" done v-bind:todos="dones"/>
+    <TodoList 
+      title="Tarefas" 
+      v-bind:todos="todos"
+      :doneTodo="doneTodo"
+    />
+    <TodoList 
+      title="Concluidas" 
+      v-bind:todos="dones"
+      :doneTodo="restoreTodo" 
+      done
+      :clean="cleanDoneTasks" 
+    />
     <img v-show="showGif" :src="gif" class="gif" />
   </div>
 </template>

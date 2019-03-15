@@ -5,5 +5,6 @@ export default {
         title: String,
         done: Boolean,
         doneTodo: Function,
+        clean: Function
     }
 }
