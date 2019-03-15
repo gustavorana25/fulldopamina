@@ -17,11 +17,11 @@ export default {
     }),
     methods: {
         addTodo: function (e) {
+            e.preventDefault();
             this.todos.push(this.newTodo);
             this.newTodo = "";
             playAudio("yeah", 0.4);
             this.updateLocalStorage();
-            e.preventDefault();
         },
         doneTodo: function (index) {
             this.dones.push(this.todos[index]);
@@ -35,7 +35,7 @@ export default {
             this.dones = this.dones.filter((_, i) => i !== index);
             this.updateLocalStorage();
         },
-        updateLocalStorage:() => {
+        updateLocalStorage: function(){
             saveLocalStorage("todo", this.todos);
             saveLocalStorage("done", this.dones);
         },
