@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="list">
     <h1>{{title}}:</h1>
     <ul>
       <li v-bind:class="{ done: done }" v-for="(todo, i) in todos" v-on:click="doneTodo(i)" :key="i">

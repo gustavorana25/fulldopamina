@@ -1,10 +1,6 @@
 import TodoList from './components/TodoList/TodoList.vue';
-import {randomGif} from './gifs';
-
-const audios = {
-    yeah: new Audio(require('./assets/yeah.wav')),
-    victory: new Audio(require('./assets/victory.wav'))
-}
+import { playAudio } from './helpers/audio';
+import {randomGif} from './helpers/gifs';
 
 const saveTodos = (todos)=>{
     localStorage.setItem("todos", JSON.stringify(todos))
@@ -31,7 +27,7 @@ export default {
             this.todos.push(this.newTodo);
             this.newTodo = "";
 
-            this.playAudio(audios.yeah, 0.5);
+            playAudio("yeah", 0.4);
             saveTodos(this.todos);
             e.preventDefault();
         },
@@ -39,16 +35,15 @@ export default {
             this.dones.push(this.todos[index]);
             this.todos = this.todos.filter((_,i) => i!==index);
             saveTodos(this.todos);
-            this.playAudio(audios.victory, 0.3);
-            this.showGif = true;
-            this.gif= randomGif();
-            setTimeout(()=>{
-                this.showGif = false;
-            },2000)
+            playAudio("victory", 0.3);
+            this.addGif();
         },
-        playAudio: function(audio, volume){
-            audio.volume = volume;
-            audio.play();
+        addGif: function(){
+            this.showGif = true;
+            setTimeout(() => {
+                this.showGif = false;
+                this.gif = randomGif();
+            }, 3000)
         }
     }
 }
